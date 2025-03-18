@@ -40,13 +40,13 @@
     color: #e25440;
     border:1px solid #fff;
     color:#fff;
-    -webkit-font-smoothing: antialiased;
+    /* -webkit-font-smoothing: antialiased; */
     animation-name: run;
-    animation-duration: 5s;
+    /* animation-duration: 5s; */
 
 
 }
-.navigation__item a:hover{color:#fff;transform:0.5s;    border: 1px solid #e25440;letter-spacing: 1px;
+.navigation__item a:hover, .navigationList li:hover{color:#fff;transform:0.5s;    border: 1px solid #e25440;letter-spacing: 1px;
     text-shadow: none;
     color: #e25440;
 }
@@ -61,7 +61,7 @@
     animation-name: run;
     animation-duration: 5s;
   } */
-  @keyframes run {
+  /* @keyframes run {
     0% {
       left: 0;
     }
@@ -71,4 +71,4 @@
     100% {
       left: 0; transform: scaleX(-1);
     }
-  }
+  } */

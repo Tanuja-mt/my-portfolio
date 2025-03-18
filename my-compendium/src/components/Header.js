@@ -1,63 +1,79 @@
 import React from "react";
-import '../styles/Header.css';
-import profileImg from '../assets/profile-photo.jpeg';
-import AboutFun from '../components/About';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import {FaTwitter,FaLinkedin,FaFacebookF,FaGithub } from 'react-icons/fa';
-const HeaderFun = ()=> {
-    return (
-        <header className="header">
-            <div className="panel-main">
-            <div className="panel">
-                <div className="pannelContainer">
-                    <a href="">
-                        <img src={profileImg} />
-                        <span>Tanuja Tiwari</span>
-                    </a>
-                    <div className="profession">Frontend Developer Sinc 3 Years</div>
-                        <ul class="navigation">
-                            <li class="navigation__item"><a href="/about/" title="link to About Me" class="blog-button">About
-                                Me</a></li>
-                                <Link to="/AboutFun">About</Link>
+import { BrowserRouter as Router, Route, Routes, Link ,useNavigate } from "react-router-dom";
+import { FaTwitter, FaLinkedin, FaFacebookF, FaGithub } from "react-icons/fa";
+import "../styles/Header.css";
+import profileImg from "../assets/profile-photo.jpg";
+import { useState } from 'react';
 
-                            <li class="navigation__item"><a href="/skills/" title="link to Skills" class="blog-button">Skills</a></li>
-                        </ul>
-                        <ul class="navigationList">
-                            <li class="navigationBtn">
-                                <a href="http://twitter.com/anshulrohilla" title="@anshulrohilla on Twitter" target="_blank">
-                                <FaTwitter size={22} color="#fff" />
-                                {/* <span class="label">Twitter</span> */}
-                                </a>
-                            </li>
-                            <li class="navigationBtn">
-                                <a href="www.linkedin.com/in/tanujatiwarii" title="anshulrohilla.ac on Facebook" target="_blank">
-                                <FaLinkedin  size={22} color="#fff" />
-                                    {/* <span class="label">Facebook</span> */}
-                                </a>
-                            </li>
-                            <li class="navigationBtn">
-                                <a href="https://www.linkedin.com/in/anshulrohilla" title="anshulrohilla on LinkedIn" target="_blank">
-                                <FaFacebookF  size={22} color="#fff" />
-                                    {/* <span class="label">LinkedIn</span> */}
-                                </a>
-                            </li>
-                            <li class="navigationBtn">
-                                <a href="https://www.github.com/anshul-rohilla" title="anshul-rohilla on GitHub" target="_blank">
-                                <FaGithub  size={22} color="#fff"/>
-                                    {/* <span class="label">GitHub</span> */}
-                                </a>
-                            </li>
-                           
-                        </ul>
-                </div>
-            </div>
-            </div>
-              <div class="panel-cover--overlay"></div>
-
-              <Switch>
-          <Route path="/About" component={AboutFun} />
-        </Switch>
-        </header>
-    )
+const user = {
+  name:'Tanuja Tiwari',
+  profession:'Frontend Developer Since 3 Years',
 }
+
+function MyButton() {
+  const [count, setCount] = useState(0);
+  function handleClick() {
+    setCount(count + 1);
+  }
+  return (
+    <button onClick={handleClick}>I'm a button</button>
+  );
+}
+
+const HeaderFun = () => {
+  return (
+    <Router>
+      <header className="header">
+        <div className="panel-main">
+          <div className="panel">
+            <div className="pannelContainer">
+              <a href="/">
+                <img src={profileImg} alt="Profile" />
+                <span>{user.name}</span>
+              </a>
+              <div className="profession">{user.profession}</div>
+              <ul className="navigation">
+                <li className="navigation__item">
+                  <Link className="blog-button">About Me</Link>
+                </li>
+                <li className="navigation__item">
+                  <a href="/skills/" title="link to Skills" className="blog-button">Skills</a>
+                </li>
+              </ul>
+              <MyButton />
+              <ul className="navigationList">
+                <li className="navigationBtn">
+                  <a href="http://twitter.com/anshulrohilla" title="@anshulrohilla on Twitter" target="_blank" rel="noopener noreferrer">
+                    <FaTwitter size={22} color="#fff" />
+                  </a>
+                </li>
+                <li className="navigationBtn">
+                  <a href="https://www.linkedin.com/in/tanujatiwarii" title="Tanuja Tiwari on LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <FaLinkedin size={22} color="#fff" />
+                  </a>
+                </li>
+                <li className="navigationBtn">
+                  <a href="https://www.facebook.com/tanujatiwari" title="Tanuja Tiwari on Facebook" target="_blank" rel="noopener noreferrer">
+                    <FaFacebookF size={22} color="#fff" />
+                  </a>
+                </li>
+                <li className="navigationBtn">
+                  <a href="https://www.github.com/tanuja-tiwari" title="Tanuja Tiwari on GitHub" target="_blank" rel="noopener noreferrer">
+                    <FaGithub size={22} color="#fff" />
+                  </a>
+                </li>
+              </ul>
+             
+            </div>
+          </div>
+        </div>
+        <div className="panel-cover--overlay"></div>
+        {/* <Routes>
+          <Route path="/AboutFun" element={<AboutFun />} />
+        </Routes> */}
+      </header>
+    </Router>
+  );
+};
+
 export default HeaderFun;
